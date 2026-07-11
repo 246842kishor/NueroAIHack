@@ -26,6 +26,7 @@ def _networks_by_group() -> dict:
     """A small registry-shape mapping used by the _parse_arg tests."""
     return {
         "basic": ["basic/music_nerd.hocon", "basic/coffee_finder.hocon"],
+        "basic": ["basic/music_nerd.hocon", "basic/coffee_finder_new.hocon"],
         "industry": ["industry/airline_policy.hocon"],
         "root": ["agent_network_designer.hocon"],
     }
@@ -40,6 +41,7 @@ class TestParseArg:
         assert ImportCommand._parse_arg(["all"], networks_by_group) == [
             "basic/music_nerd.hocon",
             "basic/coffee_finder.hocon",
+            "basic/coffee_finder_new.hocon",
             "industry/airline_policy.hocon",
             "agent_network_designer.hocon",
         ]
@@ -50,6 +52,7 @@ class TestParseArg:
         assert ImportCommand._parse_arg(["basic"], networks_by_group) == [
             "basic/music_nerd.hocon",
             "basic/coffee_finder.hocon",
+            "basic/coffee_finder_new.hocon",
         ]
 
     def test_multiple_groups_space_separated(self, networks_by_group: dict) -> None:
@@ -59,6 +62,7 @@ class TestParseArg:
             "industry/airline_policy.hocon",
             "basic/music_nerd.hocon",
             "basic/coffee_finder.hocon",
+            "basic/coffee_finder_new.hocon",
         ]
 
     def test_single_network_bare_name(self, networks_by_group: dict) -> None:
@@ -97,6 +101,7 @@ class TestParseArg:
         assert ImportCommand._parse_arg([" basic ", " industry "], networks_by_group) == [
             "basic/music_nerd.hocon",
             "basic/coffee_finder.hocon",
+            "basic/coffee_finder_new.hocon",
             "industry/airline_policy.hocon",
         ]
 

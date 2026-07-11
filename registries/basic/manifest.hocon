@@ -39,4 +39,6 @@
     "basic/pii_middleware.hocon": true,
     "basic/smart_home.hocon": true,
     "basic/wolfram_mcp.hocon": true,
+    "basic/hackathon_idea_finder.hocon": true,
+
 }

@@ -61,12 +61,11 @@
         "serve": true,
         "public": false
     },
-
     #
     # Agent network test generator
     #
     "agent_network_test_generator.hocon": true,
-
+    
     # This agent network performs the following actions:
     # 1. Calls "agent_network_designer" as an external agent to generate a .hocon configuration file.
     # 2. Uses the "agent_network_html_generator" tool (from the toolbox) to create an HTML visualization of the network.
@@ -91,5 +90,5 @@
     #   For example, you can run:
     #     python -m neuro_san_studio run --server-http-port 8081 --nsflow-port 4174
     "agent_network_architect.hocon": false,
-
+   
 }

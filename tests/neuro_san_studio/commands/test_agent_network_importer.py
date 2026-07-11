@@ -141,6 +141,7 @@ class TestImportNetwork:
         registries.mkdir(parents=True)
         manifest_path = registries / "manifest.hocon"
         manifest_path.write_text('{\n    "basic/coffee_finder.hocon": true\n}\n')
+        manifest_path.write_text('{\n    "basic/coffee_finder_new.hocon": true\n}\n')
 
         importer = AgentNetworkImporter(str(tmp_path / "source"), str(target_dir))
         importer.update_manifest(["basic/music_nerd.hocon", "agent_network_designer.hocon"])
@@ -149,6 +150,7 @@ class TestImportNetwork:
         assert merged == {
             "agent_network_designer.hocon",
             "basic/coffee_finder.hocon",
+             "basic/coffee_finder_new.hocon",
             "basic/music_nerd.hocon",
         }
 

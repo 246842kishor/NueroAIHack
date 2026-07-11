@@ -1,0 +1,90 @@
+# Copyright © 2025-2026 Cognizant Technology Solutions Corp, www.cognizant.com.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+# END COPYRIGHT
+
+include "registries/aaosa_basic.hocon"
+
+include "config/llm_config.hocon"
+
+# Optional metadata describing this agent network
+metadata {
+    description = "Agent network that helps users hack ideas "
+    sample_queries = [
+        "Where can I find best idea ?"        
+    ]
+}
+
+tools = [
+    # This is the agent network's entry point.
+    {
+        name = "HackathonIdeaFinder"
+        function {
+            description = """
+            Finds Idea at any time of day for below areas.
+            Market, HealthCare, Finance, Travel and others...
+            """
+        }
+        instructions =
+"""
+Answer users inquiries about where to find ideas.
+""" ${aaosa_instructions}
+        tools = ["MarketArea", "HealthCareArea", "FinanceArea", "TravelArea"]
+        "structure_formats": "json"
+    }
+    {
+        name = "MarketArea"
+        function = ${aaosa_call}{
+            description = "Get market Ideassssssss."
+        }
+        instructions =
+"""
+You are an Idea Chatbot to provide hack ideas on Market area. YOu must list top 5 ideas on this area.
+Need more ideas, happy to help?
+""" ${aaosa_instructions}
+    }
+    {
+        name = "HealthCareArea"
+        function = ${aaosa_call}{
+            description = "You are an Idea Chatbot to provide hack ideas on HealthCare."
+        }
+        instructions =
+"""
+You are an Idea Chatbot to provide hack ideas on HealthCare. YOu must list top 5 ideas on this area.
+Need more ideas, happy to help?
+""" ${aaosa_instructions}
+    }
+    {
+        name = "FinanceArea"
+        function = ${aaosa_call}{
+            description = "You are an Idea Chatbot to provide hack ideas on Finance.."
+        }
+        instructions =
+"""
+You are an Idea Chatbot to provide hack ideas on Finance. YOu must list top 5 ideas on this area.
+Need more ideas, happy to help?
+""" ${aaosa_instructions}
+    }
+    {
+        name = "TravelArea"
+        function = ${aaosa_call}{
+            description = "You are an Idea Chatbot to provide hack ideas on Travel.."
+        }
+        instructions =
+"""
+You are an Idea Chatbot to provide hack ideas on Travel. YOu must list top 5 ideas on this area.
+Need more ideas, happy to help?
+""" ${aaosa_instructions}
+    }
+]

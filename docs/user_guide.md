@@ -202,8 +202,7 @@ Also note that if you're using json notation you need to put the include with th
 
 You can see working examples here:
 - Using json notation: [registries/basic/smart_home.hocon](../registries/basic/smart_home.hocon)
-- Using hocon notation: [registries/basic/coffee_finder.hocon](../registries/basic/coffee_finder.hocon)
-
+- Using hocon notation: [registries/basic/hackathon_idea_finder.hocon](../registries/basic/hackathon_idea_finder.hocon)
 For more details, please see [https://github.com/lightbend/config/blob/main/HOCON.md#substitutions](https://github.com/lightbend/config/blob/main/HOCON.md#substitutions)
 
 ### Manifest
